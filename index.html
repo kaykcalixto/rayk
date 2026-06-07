@@ -1036,7 +1036,7 @@
   @media (hover: none) {
     .cursor, .cursor-ring { display: none; }
     body { cursor: auto; }
-    .filter-btn, .form-submit, .play-reel-btn, .nav-hamburger { cursor: pointer; }
+    a, button, .portfolio-item, .filter-btn, .form-submit, .play-reel-btn, .nav-hamburger { cursor: pointer; }
   }
   /* VIDEO MODAL */
   .modal-overlay {
@@ -1115,7 +1115,7 @@
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       Fechar
     </button>
-    <iframe id="reelIframe" src="" allowfullscreen allow="autoplay"></iframe>
+    <video id="reelIframe" controls playsinline style="position:absolute;inset:0;width:100%;height:100%;background:#000;"></video>
   </div>
 </div>
 
@@ -1510,7 +1510,7 @@
   <div class="reel-content reveal">
     <p style="color: rgba(255, 255, 255, 0.383);">Assista ao</p>
     <h2 class="reel-title">Demoreel<br>2025</h2>
-    <button class="play-reel-btn" id="reelBtn" data-video="https://www.youtube.com/embed/VYPz9x9oygw">
+    <button class="play-reel-btn" id="reelBtn" data-video="demoComp.mp4">
       <span class="play-circle">
         <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z" fill="currentColor"/></svg>
       </span>
@@ -1636,11 +1636,13 @@
   function openReel() {
     const url = reelBtn.dataset.video;
     reelIframe.src = url;
+    reelIframe.play();
     reelModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeReel() {
     reelModal.classList.remove('open');
+    reelIframe.pause();
     reelIframe.src = '';
     document.body.style.overflow = '';
   }

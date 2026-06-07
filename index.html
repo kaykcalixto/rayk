@@ -114,13 +114,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
     opacity: .35;
   }
 
 
+  /* HERO */
+  .hero {
     position: relative;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -130,9 +133,7 @@
  .hero-bg {
     position: absolute;
     inset: 0;
-      background-image: url("noirOriginal.jpeg");
-      background-size: cover;
-      background-position: 100px;
+    background: var(--bg);
   }
   .hero-bg-grid {
     position: absolute;
@@ -185,7 +186,7 @@
   }
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(5rem, 14vw, 13rem);
+    font-size: clamp(3.5rem, 12vw, 11rem);
     line-height: .88;
     letter-spacing: .02em;
     color: var(--text);
@@ -434,7 +435,30 @@
   }
   .portfolio-item {
     position: relative;
+    transition: opacity .4s ease, transform .4s ease;
   }
+  /* VER MAIS */
+  .ver-mais-wrap {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .ver-mais-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: .75rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    cursor: pointer;
+    transition: border-color .3s, color .3s;
+  }
+  .ver-mais-btn:hover { border-color: var(--text); color: var(--text); }
+  .ver-mais-btn.hidden { display: none; }
   /* 16:9 video wrapper */
   .video-wrap {
     position: relative;
@@ -559,9 +583,9 @@
   .reel-bg {
     position: absolute;
     inset: 0;
-      background-image: url("noirOriginal.jpeg");
-      background-size: cover;
-      background-position: 100px;
+    background-image: url("noirOriginal.jpeg");
+    background-size: cover;
+    background-position: center;
   }
   .reel-content {
     text-align: center;
@@ -887,85 +911,132 @@
     .nav-hamburger { display: flex; }
     .mobile-menu { display: flex; }
 
-    section { padding: 80px 28px; }
+    section { padding: 72px 28px; }
+    #work { padding-top: 56px; }
 
-    .hero { padding: 0 28px 60px; min-height: 100svh; }
+    /* Hero */
+    .hero { padding: 0 28px 56px; min-height: 100svh; }
     .hero-reel-label { display: none; }
-    .hero-title { font-size: clamp(4rem, 16vw, 8rem); }
+    .hero-title { font-size: clamp(3.2rem, 11vw, 6rem); }
     .hero-sub { font-size: .9rem; max-width: 100%; }
-    .hero-cta { flex-wrap: wrap; gap: 16px; }
+    .hero-cta { flex-wrap: wrap; gap: 14px; }
 
-    /* Work header stack */
-    .work-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+    /* Work */
+    .work-header { flex-direction: column; align-items: flex-start; gap: 20px; }
     .work-filter { overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .work-filter::-webkit-scrollbar { display: none; }
     .filter-btn { white-space: nowrap; cursor: pointer; }
 
-    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    /* About */
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
     .about-img-wrap { aspect-ratio: 4/3; }
     .about-img-accent { display: none; }
+    .about-stats { grid-template-columns: repeat(4, 1fr); }
 
+    /* Services */
     .services-grid { grid-template-columns: 1fr 1fr; }
-    .service-card { padding: 36px 28px; }
+    .service-card { padding: 32px 24px; }
 
-    .reel-section { height: 50vh; }
+    /* Reel */
+    .reel-section { height: 55vh; }
 
+    /* Testimonials */
     .testimonials-track { grid-template-columns: 1fr; }
     .testimonials-inner { max-width: 100%; }
 
-    .contact-inner { grid-template-columns: 1fr; gap: 56px; }
+    /* Contact */
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
 
-    footer { padding: 32px 28px; flex-direction: column; gap: 18px; text-align: center; }
-    .footer-copy { order: 3; font-size: .68rem; }
+    /* Footer */
+    footer { padding: 36px 28px; gap: 20px; text-align: center; }
+    .footer-copy { font-size: .68rem; }
   }
 
   /* ── MOBILE (≤600px) ── */
   @media (max-width: 600px) {
-    nav { padding: 18px 20px; }
+    nav { padding: 16px 20px; }
 
-    section { padding: 64px 20px; }
-    #work { padding-top: 64px; }
+    section { padding: 56px 20px; }
+    #work { padding-top: 48px; }
 
-    .hero { padding: 0 20px 52px; }
-    .hero-title { font-size: clamp(3.6rem, 18vw, 6rem); line-height: .9; }
-    .hero-tag { font-size: .62rem; letter-spacing: .2em; }
-    .hero-sub { font-size: .85rem; margin-top: 20px; }
-    .hero-cta { margin-top: 28px; }
-    .btn-primary { padding: 14px 24px; font-size: .7rem; }
+    /* Hero */
+    .hero { padding: 0 20px 48px; min-height: 100svh; justify-content: flex-end; }
+    .hero-title { font-size: clamp(2.8rem, 13vw, 4.5rem); line-height: .88; }
+    .hero-tag { font-size: .6rem; letter-spacing: .18em; margin-bottom: 14px; }
+    .hero-sub { font-size: .82rem; margin-top: 16px; line-height: 1.65; }
+    .hero-cta { margin-top: 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .btn-primary { padding: 14px 24px; font-size: .7rem; width: 100%; justify-content: center; }
+    .btn-ghost { font-size: .7rem; }
     .scroll-ind { display: none; }
 
-    .section-title { font-size: clamp(2rem, 10vw, 3rem); margin-bottom: 36px; }
+    /* Section titles */
+    .section-title { font-size: clamp(1.9rem, 9vw, 2.8rem); margin-bottom: 32px; line-height: .95; }
+    .section-label { font-size: .6rem; }
 
-    /* About: hide portrait image, show stats only */
-    .about-visual { overflow: visible; }
-    .about-img-wrap { aspect-ratio: 3/2; }
-    .stat { padding: 20px 16px; }
-    .stat-num { font-size: 2.2rem; }
+    /* Portfolio */
+    .portfolio-grid { gap: 28px; }
+    .portfolio-info { margin-top: 10px; }
+    .portfolio-name { font-size: 1rem; }
 
-    /* Services 1 col */
+    /* Work header */
+    .work-header { gap: 16px; }
+    .work-filter {
+      flex-wrap: wrap;
+      overflow-x: visible;
+      gap: 6px;
+    }
+    .filter-btn { padding: 7px 14px; font-size: .66rem; white-space: nowrap; flex: 0 0 auto; }
+
+    /* Hero video zoom to hide black bars */
+    .hero-video-bg video { transform: scale(1.18); }
+
+    /* About */
+    .about-inner { gap: 32px; }
+    .about-img-wrap { aspect-ratio: 1/1; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 18px 14px; }
+    .stat-num { font-size: 2rem; }
+    .stat-label { font-size: .62rem; }
+    .about-text p { font-size: .88rem; }
+    .about-services { gap: 8px; }
+    .service-tag { padding: 6px 14px; font-size: .66rem; }
+
+    /* Services */
     .services-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 32px 24px; }
-    .service-num { font-size: 3rem; margin-bottom: 16px; }
+    .service-card { padding: 28px 20px; }
+    .service-num { font-size: 2.8rem; margin-bottom: 12px; }
+    .service-name { font-size: 1.5rem; }
+    .service-desc { font-size: .82rem; }
 
-    .reel-section { height: 60vmax; padding: 0 20px; }
-    .reel-title { font-size: clamp(2.4rem, 12vw, 5rem); }
-    .play-reel-btn { padding: 14px 28px; font-size: .7rem; }
+    /* Reel */
+    .reel-section { height: auto; min-height: 55vmax; padding: 60px 20px; }
+    .reel-title { font-size: clamp(2.2rem, 11vw, 4rem); }
+    .play-reel-btn { padding: 14px 26px; font-size: .7rem; }
 
-    .testimonial { padding: 36px 24px; }
+    /* Testimonials */
+    .testimonial { padding: 32px 20px; }
+    .testimonial-quote { font-size: .9rem; }
+    .testimonial-quote::before { font-size: 3rem; }
 
-    .contact-inner { gap: 48px; }
+    /* Contact */
+    .contact-inner { gap: 40px; }
     .contact-link { font-size: .82rem; }
-    .form-submit { width: 100%; justify-content: center; padding: 16px 24px; }
+    .contact-link-icon { width: 36px; height: 36px; }
+    .form-group input,
+    .form-group textarea { font-size: .85rem; padding: 16px 0 12px; }
+    .form-submit { width: 100%; justify-content: center; padding: 16px 20px; }
 
-    footer { padding: 28px 20px; }
-    .footer-social { gap: 16px; }
+    /* Footer */
+    footer { padding: 36px 20px; gap: 16px; }
+    .footer-social { gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .footer-copy { font-size: .65rem; }
   }
 
-  /* Touch devices: hide custom cursor */
+  /* Touch: hide custom cursor */
   @media (hover: none) {
     .cursor, .cursor-ring { display: none; }
     body { cursor: auto; }
-    .filter-btn, .form-submit, .play-reel-btn { cursor: pointer; }
+    .filter-btn, .form-submit, .play-reel-btn, .nav-hamburger { cursor: pointer; }
   }
   /* VIDEO MODAL */
   .modal-overlay {
@@ -1035,11 +1106,6 @@
   <a href="#work" class="mobile-nav-link">Trabalho</a>
   <a href="#about" class="mobile-nav-link">Sobre</a>
   <a href="#contact" class="mobile-nav-link">Contato</a>
-  <div class="mobile-menu-social">
-    <a href="#">Instagram</a>
-    <a href="#">YouTube</a>
-    <a href="#">LinkedIn</a>
-  </div>
 </div>
 
 <!-- VIDEO MODAL -->
@@ -1076,13 +1142,13 @@
   <!-- VÍDEO DE FUNDO: troque SEU_VIDEO.mp4 pelo nome do seu arquivo -->
   <div class="hero-video-bg">
     <video autoplay muted loop playsinline>
-      <source src="demoreel.mp4" type="video/mp4">
+      <source src="demoComp.mp4" type="video/mp4">
     </video>
   </div>
 
   <div class="hero-tag" style="color: rgba(255, 255, 255, 0.383);">Editor de Vídeo</div>
-  <h1 class="hero-title" style="font-size: 150px;;">Rayk<br><span>Calixto</span></h1>
-  <p class="hero-sub" style="color: rgba(255, 255, 255, 0.383);"> dps coloco alguma frase aqui dps coloco alguma frase aqui dps coloco alguma frase aqui dps coloco alguma frase aqui.</p>
+  <h1 class="hero-title">Rayk<br><span>Calixto</span></h1>
+  <p class="hero-sub" style="color: rgba(255, 255, 255, 0.383);"> Vídeos profissionais com criatividade e propósito.</p>
   <div class="hero-cta">
     <a href="#work" class="btn-primary">
       Ver Portfólio
@@ -1105,8 +1171,10 @@
     </div>
     <div class="work-filter">
       <button class="filter-btn active" data-filter="todos">Todos</button>
-      <button class="filter-btn" data-filter="corporativo">Corporativo</button>
-      <button class="filter-btn" data-filter="evento">Eventos</button>
+      <button class="filter-btn" data-filter="esportivo">Esportivo</button>
+      <button class="filter-btn" data-filter="evento">Evento</button>
+      <button class="filter-btn" data-filter="institucional">Institucional</button>
+      <button class="filter-btn" data-filter="publicidade">Publicidade</button>
     </div>
   </div>
 
@@ -1114,46 +1182,326 @@
 
   <div class="portfolio-grid">
 
-    <!-- Item 1 — troque SEU_VIDEO_1.mp4 pelo nome do seu arquivo -->
-    <div class="portfolio-item reveal" data-category="evento">
-      <div class="video-wrap">
-        <video controls preload="metadata">
-          <source src="biosummit.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="portfolio-info">
-        <div class="portfolio-cat">Evento</div>
-        <div class="portfolio-name">BIOSUMMIT</div>
-      </div>
-    </div>
+
+      <!--  INICIA OS EVENTOS   -->
 
     <!-- Item 2 — troque SEU_VIDEO_2.mp4 pelo nome do seu arquivo -->
     <div class="portfolio-item reveal" data-category="evento">
       <div class="video-wrap">
         <video controls preload="metadata">
-          <source src="SEU_VIDEO_2.mp4" type="video/mp4">
+          <source src="eventoComp/AFTERMOVIE_MGM.mp4" type="video/mp4">
         </video>
       </div>
       <div class="portfolio-info">
         <div class="portfolio-cat">Evento</div>
-        <div class="portfolio-name">PORSCHE CUP</div>
+        <div class="portfolio-name">KSOP - BETMGM</div>
       </div>
     </div>
 
-    <!-- Item 3 — troque SEU_VIDEO_3.mp4 pelo nome do seu arquivo -->
-    <div class="portfolio-item reveal" data-category="corporativo">
+    <div class="portfolio-item reveal" data-category="evento">
       <div class="video-wrap">
         <video controls preload="metadata">
-          <source src="SEU_VIDEO_3.mp4" type="video/mp4">
+          <source src="eventoComp/BIOSUMMIT_V3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">BIO SUMMIT 2026</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="evento">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="eventoComp/CASAJD_AFTERMOVIE.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">CASA JOHN DEERE</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="evento">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="eventoComp/EIA_2026.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">EIA 2026</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="evento">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="eventoComp/HIGHLIGHTS_HYUNDAI_2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">HYUNDAI - SALÃO DO AUTOMÓVEL</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="evento">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="eventoComp/HIGHREC -LEGACY_DOC.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">LEGACY DOC</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="evento">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="eventoComp/REELS.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">CALDAS COUNTRY - BETMGM</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="evento">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="eventoComp/REELS_HIGHLIGHTS_3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Evento</div>
+        <div class="portfolio-name">HYUNDAI - SALÃO DO AUTOMÓVEL</div>
+      </div>
+    </div>
+
+    <!--  ACABA OS EVENTOS   -->
+
+
+    <!--  INICIA OS ESPORTIVOS   -->
+
+    <!-- Item 1 — troque SEU_VIDEO_1.mp4 pelo nome do seu arquivo -->
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/AFTERMOVIE.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">KIDS LEAGUE - ETAPA 2</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/REELS01_LUIZ_v2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">PORSCHE CUP - ETAPA 2</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/REELS02_LUIZ.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">PORSCHE CUP - ETAPA 1</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/REELS03_GIULIANO.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">ENDURANCE - ETAPA 2</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/REELS04_MARCELINHO_v2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">PORSCHE CUP - ETAPA 2</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/REELS07_KAIRIS.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">PORSCHE CUP - ETAPA 1</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/REELS_AFTERMOVIE.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">KIDS LEAGUE - ETAPA 1</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="esportivo">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="esportivoComp/VINHETA_HYUNDAI_V4.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Esportivo</div>
+        <div class="portfolio-name">VINHETA HYUNDAI TCR</div>
+      </div>
+    </div>
+
+    <!--  ACABA OS ESPORTIVOS     -->
+
+
+
+    <!-- INICIA OS INSTITUICIONAIS -->
+
+    <!-- Item 3 — troque SEU_VIDEO_3.mp4 pelo nome do seu arquivo -->
+    <div class="portfolio-item reveal" data-category="institucional">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="instituicionalComp/CITROEN RACE.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Institucional</div>
+        <div class="portfolio-name">Citroen race</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="institucional">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="instituicionalComp/ESG_&_TAL.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Institucional</div>
+        <div class="portfolio-name">ESG & TAL - ITAÚ</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="institucional">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="instituicionalComp/JOHN_DEERED.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Institucional</div>
+        <div class="portfolio-name">CRAQUE NO CAMPO - JOHN DEERE</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="institucional">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="instituicionalComp/R1_INSTITUCIONAL_3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Institucional</div>
+        <div class="portfolio-name">Institucional - GRUPO R1</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="institucional">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="instituicionalComp/TES_MANIFESTO_PORTUGUÊS.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Institucional</div>
+        <div class="portfolio-name">MANIFESTO - TES CENOGRAFIA</div>
+      </div>
+    </div>
+
+<!-- ACABA OS INSTITUICIONAIS -->
+
+<!-- INICIA OS PUBLICIDADES -->
+
+<div class="portfolio-item reveal" data-category="publicidade">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="publicidadeComp/HYUNDAI_CLAUDIA_LEITTE_4.mp4" type="video/mp4">
         </video>
       </div>
       <div class="portfolio-info">
         <div class="portfolio-cat">Corporativo</div>
-        <div class="portfolio-name">Hyundai</div>
+        <div class="portfolio-name">Claudia Leitte - HYUNDAI CRETA</div>
       </div>
     </div>
 
+    <div class="portfolio-item reveal" data-category="publicidade">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="publicidadeComp/TCR_HYUNDAI_V4.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Corporativo</div>
+        <div class="portfolio-name">TCR SOUTH AMERICA - HYUNDAI</div>
+      </div>
+    </div>
+
+    <div class="portfolio-item reveal" data-category="publicidade">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="publicidadeComp/VIDEO2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat">Corporativo</div>
+        <div class="portfolio-name">ANIVERSÁRIO HYUNDAI BRASIL</div>
+      </div>
+    </div>
+
+<!--ACABA OS PUBLICIDADES -->
+
   </div>
+
+  <div class="ver-mais-wrap">
+    <button class="ver-mais-btn" id="verMaisBtn">
+      Ver mais
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
 </section>
 
 <!-- REEL SECTION -->
@@ -1206,7 +1554,7 @@
       <h2 class="section-title" style="text-align:center; font-size: 60px;">Vamos Trabalhar juntos</h2>
       <p style="color:rgba(255, 255, 255, 0.383);font-size:.95rem;line-height:1.7;margin-bottom:40px;">Tem um projeto em mente? Entre em contato comigo!</p>
       <div class="contact-links" style="color: rgba(255, 255, 255, 0.383);">
-         <a href="https://instagram.com" class="contact-link" target="_blank" style="color: rgba(255, 255, 255, 0.383);">
+         <a href="https://www.instagram.com/rayk_sc/" class="contact-link" target="_blank" style="color: rgba(255, 255, 255, 0.383);">
           <div class="contact-link-icon">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="1" width="14" height="14" rx="4"/><circle cx="8" cy="8" r="3.5"/><circle cx="12" cy="4" r=".5" fill="currentColor"/></svg>
           </div>
@@ -1302,33 +1650,88 @@
   reelModal.addEventListener('click', e => { if (e.target === reelModal) closeReel(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReel(); });
 
-  // PORTFOLIO FILTER BUTTONS
+  // PORTFOLIO FILTER + VER MAIS
   const filterBtns = document.querySelectorAll('.filter-btn');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const verMaisBtn = document.getElementById('verMaisBtn');
+  const VISIBLE_COUNT = 3;
+
+  function applyFilter(cat) {
+    // Get items matching the current filter
+    const matching = Array.from(portfolioItems).filter(item =>
+      cat === 'todos' || item.dataset.category === cat
+    );
+    const hidden = Array.from(portfolioItems).filter(item =>
+      !(cat === 'todos' || item.dataset.category === cat)
+    );
+
+    // Hide non-matching
+    hidden.forEach(item => { item.style.display = 'none'; });
+
+    // Show only first VISIBLE_COUNT of matching, hide the rest
+    matching.forEach((item, i) => {
+      if (i < VISIBLE_COUNT) {
+        item.style.display = '';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(16px)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          item.style.transition = 'opacity .35s ease, transform .35s ease';
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }));
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // Show/hide ver mais button
+    if (matching.length > VISIBLE_COUNT) {
+      verMaisBtn.classList.remove('hidden');
+      verMaisBtn.dataset.expanded = 'false';
+      verMaisBtn.innerHTML = 'Ver mais <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    } else {
+      verMaisBtn.classList.add('hidden');
+    }
+  }
+
+  // Ver mais toggle
+  verMaisBtn.addEventListener('click', () => {
+    const cat = document.querySelector('.filter-btn.active').dataset.filter;
+    const matching = Array.from(portfolioItems).filter(item =>
+      cat === 'todos' || item.dataset.category === cat
+    );
+    const expanded = verMaisBtn.dataset.expanded === 'true';
+
+    if (!expanded) {
+      // Show all
+      matching.forEach(item => {
+        item.style.display = '';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(16px)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          item.style.transition = 'opacity .35s ease, transform .35s ease';
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }));
+      });
+      verMaisBtn.dataset.expanded = 'true';
+      verMaisBtn.innerHTML = 'Ver menos <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 11V1M1 6l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    } else {
+      // Collapse back to VISIBLE_COUNT
+      applyFilter(cat);
+    }
+  });
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const cat = btn.dataset.filter;
-
-      portfolioItems.forEach(item => {
-        if (cat === 'todos' || item.dataset.category === cat) {
-          item.style.display = '';
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(16px)';
-          requestAnimationFrame(() => requestAnimationFrame(() => {
-            item.style.transition = 'opacity .35s ease, transform .35s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-          }));
-        } else {
-          item.style.display = 'none';
-        }
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  // Init: apply default filter (todos)
+  applyFilter('todos');
 
   // NAV COMPACT ON SCROLL
   const navEl = document.querySelector('nav');

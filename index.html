@@ -28,36 +28,38 @@
     color: var(--text);
     font-family: var(--font-body);
     font-weight: 300;
-    cursor: none;
     overflow-x: hidden;
   }
 
-  /* CUSTOM CURSOR */
-  .cursor {
-    position: fixed;
-    top: 0; left: 0;
-    width: 12px; height: 12px;
-    background: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width .2s, height .2s, background .2s;
-    mix-blend-mode: difference;
+  /* CUSTOM CURSOR — apenas em dispositivos com mouse */
+  @media (hover: hover) {
+    body { cursor: none; }
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s, background .2s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform .08s linear, width .3s, height .3s;
+    }
+    body:has(a:hover) .cursor,
+    body:has(button:hover) .cursor { width: 20px; height: 20px; }
   }
-  .cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
-    width: 40px; height: 40px;
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform .08s linear, width .3s, height .3s;
-  }
-  body:has(a:hover) .cursor,
-  body:has(button:hover) .cursor { width: 20px; height: 20px; }
 
   /* NAV */
   nav {
@@ -1510,7 +1512,7 @@
   <div class="reel-content reveal">
     <p style="color: rgba(255, 255, 255, 0.383);">Assista ao</p>
     <h2 class="reel-title">Demoreel<br>2025</h2>
-    <button class="play-reel-btn" id="reelBtn" data-video="demoComp.mp4">
+    <button class="play-reel-btn" id="reelBtn" data-video="SEU_DEMOREEL.mp4">
       <span class="play-circle">
         <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z" fill="currentColor"/></svg>
       </span>

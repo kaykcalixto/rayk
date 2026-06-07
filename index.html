@@ -1091,6 +1091,16 @@
   }
   .modal-close:hover { opacity: 1; }
 </style>
+<script>
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('DOMContentLoaded', function() {
+      var c = document.getElementById('cursor');
+      var r = document.getElementById('cursorRing');
+      if (c) c.parentNode.removeChild(c);
+      if (r) r.parentNode.removeChild(r);
+    });
+  }
+</script>
 </head>
 <body>
 
